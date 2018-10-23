@@ -23,7 +23,7 @@
     "node": "10.11.0"
   },
   "dependencies": {
-    "express": "*"
+    "express": "^4.9.8"
   },
   "homepage": "https://github.com/NatashaShelley/heroku#readme"
 }
