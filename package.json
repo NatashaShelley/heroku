@@ -1,0 +1,29 @@
+{
+  "name": "node-example",
+  "version": "1.0.0",
+  "description": "This is a sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatashaShelley/heroku.git"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "Natasha Shelley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NatashaShelley/heroku/issues"
+  },
+  "engines": {
+    "node": "10.11.0"
+  },
+  "dependencies": {
+    "express": "*"
+  },
+  "homepage": "https://github.com/NatashaShelley/heroku#readme"
+}
