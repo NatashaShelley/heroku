@@ -19,7 +19,7 @@ function parseTopic(url){
     return rp(url)
     .then(function(html) {
         // topic.text = 
-        var text = $("#overview > .lumen-content-block:first-child > p").text();
+        var text = $("#overview > .lumen-content-block:first-child > p", html).text();
         console.log(text)
         // arr.push(topic)
     })
