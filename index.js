@@ -18,7 +18,9 @@ var options = {
 function parseTopic(url){
     return rp(url)
     .then(function(html) {
-        topic.text = $("#overview > .lumen-content-block:first-child > p").text();
+        // topic.text = 
+        var text = $("#overview > .lumen-content-block:first-child > p").text();
+        console.log(text)
         // arr.push(topic)
     })
     .catch(function(err) {
