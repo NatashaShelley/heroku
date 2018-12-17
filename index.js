@@ -19,7 +19,7 @@ function parseTopic(url){
     return rp(url)
     .then(function(html) {
         topic.text = $("#overview > .lumen-content-block:first-child > p").text();
-        arr.push(topic)
+        // arr.push(topic)
     })
     .catch(function(err) {
       //handle error
@@ -37,7 +37,7 @@ app.get('/', function(req, res){
             topic.link = 'https://www.lds.org' + $(link).attr("href")
             topic.title = $(link).text();
             parseTopic('https://www.lds.org' + $(link).attr("href"))
-            // arr.push(topic)
+            arr.push(topic)
         })
         obj[$(item).attr("id")] = arr;
         })
