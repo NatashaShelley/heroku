@@ -25,8 +25,8 @@ app.get('/', function(req, res){
         var arr = []
         $(item).find(".list--stripped > li > a").each(function(index, link) {
             var topic = {}
-            topic.link = link.attr("href")
-            topic.title = link.text()
+            topic.link = $(link).attr("href")
+            topic.title = $(link).text()
             arr.push(topic)
         })
         obj[$(item).attr("id")] = arr;
