@@ -18,7 +18,8 @@ var options = {
 function parseTopic(url){
     return rp(url)
     .then(function(html) {
-      return $("#overview > .lumen-content-block:first-child > p").text()
+        topic.text = $("#overview > .lumen-content-block:first-child > p").text();
+        arr.push(topic)
     })
     .catch(function(err) {
       //handle error
@@ -35,8 +36,8 @@ app.get('/', function(req, res){
             var topic = {}
             topic.link = 'https://www.lds.org' + $(link).attr("href")
             topic.title = $(link).text();
-            topic.text = parseTopic('https://www.lds.org' + $(link).attr("href"))
-            arr.push(topic)
+            parseTopic('https://www.lds.org' + $(link).attr("href"))
+            // arr.push(topic)
         })
         obj[$(item).attr("id")] = arr;
         })
