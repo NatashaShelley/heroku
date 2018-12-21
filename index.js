@@ -1,13 +1,13 @@
 const express = require('express');
 const request = require('request');
 const rp = require('request-promise');
-var $ = require('cheerio')
+var cheerio = require('cheerio')
 const app = express();
 
 var options = {
     uri: 'https://www.lds.org/topics?lang=eng#letter=A',
     transform: function (body) {
-        return $.load(body);
+        return cheerio.load(body);
     }
 };
 
@@ -46,19 +46,20 @@ app.get('/', function(req, res){
         // obj[$(item).attr("id")] = arr;
         // })
         })
-        Promise.all(
-            arr.map(function(url) {
-              return parseTopic(url);
-            })
-          );
+        
     //     })
     //    
         
-    
+    return arr;
     // res.send(arr)
 })
-.then(function(topicText) {
-    res.send(topicText)
+.then(function(arrOfLinks) {
+    // Promise.all(
+        var arrOfTopics = arrOfLinks.map(function(url) {
+          return parseTopic(url);
+        })
+    //   );
+    res.send(arrOfTopics)
 })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
