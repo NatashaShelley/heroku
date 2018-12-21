@@ -16,7 +16,7 @@ var options = {
 //     return 'letter=' + letter
 // })
 function parseTopic(link){
-    return rp(link)
+    rp(link)
     .then(function($) {
         return {
             text: $("#overview > .lumen-content-block:first-child > p").text()
