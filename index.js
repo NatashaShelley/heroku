@@ -1,13 +1,13 @@
 const express = require('express');
 const request = require('request');
 const rp = require('request-promise');
-var cheerio = require('cheerio')
+var $ = require('cheerio')
 const app = express();
 
 var options = {
     uri: 'https://www.lds.org/topics?lang=eng#letter=A',
     transform: function (body) {
-        return cheerio.load(body);
+        return $.load(body);
     }
 };
 
