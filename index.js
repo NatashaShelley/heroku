@@ -16,10 +16,10 @@ var options = {
 //     return 'letter=' + letter
 // })
 function parseTopic(url){
-    return rp(url)
-    .then(function(html) {
+    rp(url)
+    .then(function($) {
         return {
-            text: $("#overview > .lumen-content-block:first-child > p", html).text()
+            text: $("#overview > .lumen-content-block:first-child > p").text()
         }
         
     })
