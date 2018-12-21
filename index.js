@@ -42,7 +42,7 @@ app.get('/', function(req, res){
             $(item).find(".list--stripped > li > a").each(function(index, link) {
             // var topic = {}
             // topic.link = 
-            console.log($(link).attr("href"))
+            // console.log($(link).attr("href"))
                 arr.push('https://www.lds.org' + $(link).attr("href"))
             // topic.title = $(link).text();
             // parseTopic('https://www.lds.org' + $(link).attr("href"))
@@ -61,7 +61,20 @@ app.get('/', function(req, res){
 .then(function(arrOfLinks) {
     // Promise.all(
         var arrOfTopics = arrOfLinks.map(function(url) {
-          return parseTopic(url);
+           var opts = {
+                uri: link,
+                transform: function (body) {
+                    return cheerio.load(body);
+                }
+            };
+            rp(opts)
+            .then(function($) {
+                return $("#overview > .lumen-content-block:first-child > p").text()
+                
+            })
+            .catch(function(err) {
+            //handle error
+            });
         })
     //   );
     res.send(arrOfTopics)
