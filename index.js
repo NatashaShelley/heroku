@@ -42,6 +42,7 @@ app.get('/', function(req, res){
             $(item).find(".list--stripped > li > a").each(function(index, link) {
             // var topic = {}
             // topic.link = 
+            console.log($(link).attr("href"))
                 arr.push('https://www.lds.org' + $(link).attr("href"))
             // topic.title = $(link).text();
             // parseTopic('https://www.lds.org' + $(link).attr("href"))
