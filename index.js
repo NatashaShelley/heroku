@@ -22,11 +22,9 @@ function parseTopic(link){
             return cheerio.load(body);
         }
     };
-    return rp(opts)
+    rp(opts)
     .then(function($) {
-        return {
-            text: $("#overview > .lumen-content-block:first-child > p").text()
-        }
+        return $("#overview > .lumen-content-block:first-child > p").text()
         
     })
     .catch(function(err) {
