@@ -54,7 +54,7 @@ app.get('/', function(req, res){
         // .then(function(topicText) {
         //     res.send(topicText)
         // })
-        res.send(obj)
+        res.send(arr)
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
         console.log(err)
