@@ -62,7 +62,7 @@ app.get('/', function(req, res){
     // Promise.all(
         var arrOfTopics = arrOfLinks.map(function(url) {
            var opts = {
-                uri: link,
+                uri: url,
                 transform: function (body) {
                     return cheerio.load(body);
                 }
