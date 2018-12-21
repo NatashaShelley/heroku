@@ -55,11 +55,11 @@ app.get('/', function(req, res){
     //    
         
     
-    // res.send(arr)
+    res.send(arr)
 })
-.then(function(topicText) {
-    res.send(topicText)
-})
+// .then(function(topicText) {
+//     res.send(topicText)
+// })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
     console.log(err)
