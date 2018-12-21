@@ -45,16 +45,16 @@ app.get('/', function(req, res){
             })
         // obj[$(item).attr("id")] = arr;
         })
-        return Promise.all(
-            arr.map(function(url) {
-              return parseTopic(url);
-            })
-          );
-        })
-        .then(function(topicText) {
-            res.send(topicText)
-        })
-        // res.send(obj)
+        // return Promise.all(
+        //     arr.map(function(url) {
+        //       return parseTopic(url);
+        //     })
+        //   );
+        // })
+        // .then(function(topicText) {
+        //     res.send(topicText)
+        // })
+        res.send(obj)
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
         console.log(err)
