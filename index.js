@@ -44,7 +44,7 @@ app.get('/', function(req, res){
             // arr.push(topic)
             })
         // obj[$(item).attr("id")] = arr;
-        })
+        // })
         // return Promise.all(
         //     arr.map(function(url) {
         //       return parseTopic(url);
@@ -53,13 +53,16 @@ app.get('/', function(req, res){
         // })
         // .then(function(topicText) {
         //     res.send(topicText)
-        // })
-        res.send(arr)
-    .catch(function (err) {
-        // Crawling failed or Cheerio choked...
-        console.log(err)
-    });
-   
+        
+        })
+        
+    
+    res.send(arr)
+})
+.catch(function (err) {
+    // Crawling failed or Cheerio choked...
+    console.log(err)
+})
 })
 
 app.listen(app.get('port'), function() {
