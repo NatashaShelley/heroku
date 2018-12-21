@@ -59,7 +59,7 @@ app.get('/', function(req, res){
           return parseTopic(url);
         })
     //   );
-    res.send(arrOfTopics)
+    res.send(arrOfLinks)
 })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
