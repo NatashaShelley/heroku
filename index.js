@@ -15,8 +15,8 @@ var options = {
 // var ids = letters.map(function(letter){
 //     return 'letter=' + letter
 // })
-function parseTopic(url){
-    rp(url)
+function parseTopic(link){
+    rp(link)
     .then(function($) {
         return {
             text: $("#overview > .lumen-content-block:first-child > p").text()
