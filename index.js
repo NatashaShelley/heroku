@@ -16,7 +16,13 @@ var options = {
 //     return 'letter=' + letter
 // })
 function parseTopic(link){
-    rp(link)
+    var opts = {
+        uri: link,
+        transform: function (body) {
+            return cheerio.load(body);
+        }
+    };
+    rp(opts)
     .then(function($) {
         return {
             text: $("#overview > .lumen-content-block:first-child > p").text()
@@ -59,7 +65,7 @@ app.get('/', function(req, res){
           return parseTopic(url);
         })
     //   );
-    res.send(arrOfLinks)
+    res.send(arrOfTopics)
 })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
