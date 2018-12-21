@@ -22,7 +22,7 @@ function parseTopic(link){
             return cheerio.load(body);
         }
     };
-    rp(opts)
+    return rp(opts)
     .then(function($) {
         return {
             text: $("#overview > .lumen-content-block:first-child > p").text()
