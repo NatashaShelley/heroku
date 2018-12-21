@@ -46,11 +46,11 @@ app.get('/', function(req, res){
         // obj[$(item).attr("id")] = arr;
         // })
         })
-        return Promise.all(
-            arr.map(function(url) {
-              return parseTopic(url);
-            })
-          );
+        // return Promise.all(
+        //     arr.map(function(url) {
+        //       return parseTopic(url);
+        //     })
+        //   );
     //     })
     //    
         
