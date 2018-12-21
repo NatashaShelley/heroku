@@ -45,19 +45,20 @@ app.get('/', function(req, res){
             })
         // obj[$(item).attr("id")] = arr;
         // })
-        // return Promise.all(
-        //     arr.map(function(url) {
-        //       return parseTopic(url);
-        //     })
-        //   );
-        // })
-        // .then(function(topicText) {
-        //     res.send(topicText)
-        
         })
+        return Promise.all(
+            arr.map(function(url) {
+              return parseTopic(url);
+            })
+          );
+    //     })
+    //    
         
     
-    res.send(arr)
+    // res.send(arr)
+})
+.then(function(topicText) {
+    res.send(topicText)
 })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
