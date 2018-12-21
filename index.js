@@ -16,11 +16,12 @@ var options = {
 //     return 'letter=' + letter
 // })
 function parseTopic(url){
-    rp(url)
-    .then(function(html) {
-        topic.text = $("#overview > .lumen-content-block:first-child > p", html).text();
-        console.log(topic.text)
-        // arr.push(topic.text)
+    return rp(url)
+    .then(function($) {
+        return {
+            text: $("#overview > .lumen-content-block:first-child > p").text()
+        }
+        
     })
     .catch(function(err) {
       //handle error
@@ -30,20 +31,30 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/', function(req, res){
     rp(options)
     .then(function ($) {
-        var obj = {}
+        // var obj = {}
+        var arr = [];
         $(".spark-drawer__container").each(function(index, item){
-        var arr = []
-        $(item).find(".list--stripped > li > a").each(function(index, link) {
-            var topic = {}
-            topic.link = 'https://www.lds.org' + $(link).attr("href")
-            topic.title = $(link).text();
-            parseTopic('https://www.lds.org' + $(link).attr("href"))
-            arr.push(topic)
+        // var arr = []
+            $(item).find(".list--stripped > li > a").each(function(index, link) {
+            // var topic = {}
+            // topic.link = 
+                arr.push('https://www.lds.org' + $(link).attr("href"))
+            // topic.title = $(link).text();
+            // parseTopic('https://www.lds.org' + $(link).attr("href"))
+            // arr.push(topic)
+            })
+        // obj[$(item).attr("id")] = arr;
         })
-        obj[$(item).attr("id")] = arr;
+        return Promise.all(
+            arr.map(function(url) {
+              return parseTopic(url);
+            })
+          );
         })
-        res.send(obj)
-    })
+        .then(function(topicText) {
+            res.send(topicText)
+        })
+        // res.send(obj)
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
         console.log(err)
