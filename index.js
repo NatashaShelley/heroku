@@ -16,7 +16,7 @@ var options = {
 //     return 'letter=' + letter
 // })
 function parseTopic(link){
-    rp(link)
+    return rp(link)
     .then(function($) {
         return {
             text: $("#overview > .lumen-content-block:first-child > p").text()
@@ -47,19 +47,19 @@ app.get('/', function(req, res){
         // })
         })
         // return Promise.all(
-        //     arr.map(function(url) {
-        //       return parseTopic(url);
-        //     })
+            arr.map(function(url) {
+              return parseTopic(url);
+            })
         //   );
     //     })
     //    
         
     
-    res.send(arr)
+    // res.send(arr)
 })
-// .then(function(topicText) {
-//     res.send(topicText)
-// })
+.then(function(topicText) {
+    res.send(topicText)
+})
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
     console.log(err)
