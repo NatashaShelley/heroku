@@ -69,7 +69,7 @@ app.get('/', function(req, res){
             };
             rp(opts)
             .then(function($) {
-                return $("#overview > .lumen-content-block:first-child > p").text()
+                $("#overview > .lumen-content-block:first-child > p").text()
                 
             })
             .catch(function(err) {
