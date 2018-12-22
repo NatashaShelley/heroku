@@ -70,15 +70,15 @@ app.get('/', function(req, res){
         //     };
             rp(url)
             .then(function(html) {
-                arrOfTopics.push($("#overview > .lumen-content-block:first-child > p", html).text())
-                // res.send(arrOfTopics)
+                arrOfTopics.push($("#overview > .lumen-content-block:first-child > p", html).html())
+                res.send(arrOfTopics)
             })
             .catch(function(err) {
             //handle error
             });
         })
     //   );
-    res.send(arrOfTopics)
+    // res.send(arrOfTopics)
 })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
