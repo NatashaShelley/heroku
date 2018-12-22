@@ -1,13 +1,13 @@
 const express = require('express');
 const request = require('request');
 const rp = require('request-promise');
-var cheerio = require('cheerio')
+var $ = require('cheerio')
 const app = express();
 
 var options = {
     uri: 'https://www.lds.org/topics?lang=eng#letter=A',
     transform: function (body) {
-        return cheerio.load(body);
+        return $.load(body);
     }
 };
 
@@ -45,7 +45,7 @@ const parseTopic = function(url) {
 app.set('port', (process.env.PORT || 5000));
 app.get('/', function(req, res){
     rp(options)
-    .then(function ($) {
+    .then(function (html) {
         // var obj = {}
         var arr = [];
         $(".spark-drawer__container").each(function(index, item){
@@ -54,7 +54,7 @@ app.get('/', function(req, res){
             // var topic = {}
             // topic.link = 
             // console.log($(link).attr("href"))
-                arr.push('https://www.lds.org' + $(link).attr("href"))
+                arr.push('https://www.lds.org' + $(link, html).attribs.href)
             // topic.title = $(link).text();
             // parseTopic('https://www.lds.org' + $(link).attr("href"))
             // arr.push(topic)
