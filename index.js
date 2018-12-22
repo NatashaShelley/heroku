@@ -62,15 +62,15 @@ app.get('/', function(req, res){
     // Promise.all(
         var arrOfTopics = [];
         arrOfLinks.forEach(function(url) {
-           var opts = {
-                uri: url,
-                transform: function (body) {
-                    return cheerio.load(body);
-                }
-            };
-            rp(opts)
-            .then(function($) {
-                arrOfTopics.push($("#overview > .lumen-content-block:first-child > p").text())
+        //    var opts = {
+        //         uri: url,
+        //         transform: function (body) {
+        //             return cheerio.load(body);
+        //         }
+        //     };
+            rp(url)
+            .then(function(html) {
+                arrOfTopics.push($("#overview > .lumen-content-block:first-child > p", html).text())
                 res.send(arrOfTopics)
             })
             .catch(function(err) {
