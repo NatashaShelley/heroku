@@ -71,14 +71,14 @@ app.get('/', function(req, res){
             rp(opts)
             .then(function($) {
                 arrOfTopics.push($("#overview > .lumen-content-block:first-child > p").text())
-                
+                res.send(arrOfTopics)
             })
             .catch(function(err) {
             //handle error
             });
         })
     //   );
-    res.send(arrOfTopics)
+    // res.send(arrOfTopics)
 })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
