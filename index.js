@@ -15,22 +15,33 @@ var options = {
 // var ids = letters.map(function(letter){
 //     return 'letter=' + letter
 // })
-function parseTopic(link){
-    var opts = {
-        uri: link,
-        transform: function (body) {
-            return cheerio.load(body);
-        }
-    };
-    rp(opts)
-    .then(function($) {
-        return $("#overview > .lumen-content-block:first-child > p").text()
+const parseTopic = function(url) {
+    return rp(url)
+      .then(function(html) {
+        return {
+          text: $('#overview > .lumen-content-block:first-child > p', html).text()
+        };
+      })
+      .catch(function(err) {
+        //handle error
+      });
+  };
+// function parseTopic(link){
+//     var opts = {
+//         uri: link,
+//         transform: function (body) {
+//             return cheerio.load(body);
+//         }
+//     };
+//     rp(opts)
+//     .then(function($) {
+//         return $("#overview > .lumen-content-block:first-child > p").text()
         
-    })
-    .catch(function(err) {
-      //handle error
-    });
-}
+//     })
+//     .catch(function(err) {
+//       //handle error
+//     });
+// }
 app.set('port', (process.env.PORT || 5000));
 app.get('/', function(req, res){
     rp(options)
@@ -51,34 +62,39 @@ app.get('/', function(req, res){
         // obj[$(item).attr("id")] = arr;
         // })
         })
+        return Promise.all(
+            arr.map(function(url) {
+              return parseTopic(url);
+            })
+          );
         
     //     })
     //    
         
-    return arr;
+    // return arr;
     // res.send(arr)
 })
-.then(function(arrOfLinks) {
-    // Promise.all(
-        var arrOfTopics = [];
-        arrOfLinks.forEach(function(url) {
+.then(function(txt) {
+    // // Promise.all(
+    //     var arrOfTopics = [];
+    //     arrOfLinks.forEach(function(url) {
         //    var opts = {
         //         uri: url,
         //         transform: function (body) {
         //             return cheerio.load(body);
         //         }
         //     };
-            rp(url)
-            .then(function(html) {
-                arrOfTopics.push($("#overview > .lumen-content-block:first-child > p", html).html())
-                res.send(arrOfTopics)
-            })
-            .catch(function(err) {
-            //handle error
-            });
-        })
+        //     rp(url)
+        //     .then(function(html) {
+        //         arrOfTopics.push($("#overview > .lumen-content-block:first-child > p", html).html())
+        //         res.send(arrOfTopics)
+        //     })
+        //     .catch(function(err) {
+        //     //handle error
+        //     });
+        // })
     //   );
-    // res.send(arrOfTopics)
+    res.send(txt)
 })
 .catch(function (err) {
     // Crawling failed or Cheerio choked...
