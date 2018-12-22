@@ -60,7 +60,8 @@ app.get('/', function(req, res){
 })
 .then(function(arrOfLinks) {
     // Promise.all(
-        var arrOfTopics = arrOfLinks.map(function(url) {
+        var arrOfTopics = [];
+        arrOfLinks.forEach(function(url) {
            var opts = {
                 uri: url,
                 transform: function (body) {
@@ -69,7 +70,7 @@ app.get('/', function(req, res){
             };
             rp(opts)
             .then(function($) {
-                $("#overview > .lumen-content-block:first-child > p").text()
+                arrOfTopics.push($("#overview > .lumen-content-block:first-child > p").text())
                 
             })
             .catch(function(err) {
