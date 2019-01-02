@@ -54,7 +54,10 @@ app.get('/', function(req, res){
                     topic.title = $(link).text();
                     topic.text = $('#overview > .lumen-content-block:first-child > p', html).text()
                     arr.push(topic);
-                    console.log(arr)
+                    // console.log(arr)
+                }).then(function(ar){
+                    obj[$(item).attr("id")] = ar;
+                    console.log(obj)
                 })
             })
             // console.log(arr)
