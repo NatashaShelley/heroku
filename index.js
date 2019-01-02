@@ -54,20 +54,13 @@ app.get('/', function(req, res){
                     topic.title = $(link).text();
                     topic.text = $('#overview > .lumen-content-block:first-child > p', html).text()
                     arr.push(topic);
-                    // console.log(arr)
-                    // return arr;
-                    // obj[$(item).attr("id")] = arr;
-                    // console.log(obj)
                 })
-                // .then(function(ob){
-                //     // obj[$(item).attr("id")] = ar;
-                //     res.send(ob)
-                // })
             })
-            obj[$(item).attr("id")] = arr;
+            console.log(arr)
+            // obj[$(item).attr("id")] = arr;
         })   
         
-        console.log(obj)
+        // console.log(obj)
     })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
