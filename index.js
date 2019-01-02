@@ -67,7 +67,7 @@ app.get('/', function(req, res){
             obj[$(item).attr("id")] = arr;
         })   
         
-        
+        console.log(obj)
     })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
