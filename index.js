@@ -27,8 +27,11 @@ app.get('/', function(req, res){
             })
             obj[$(item).attr("id")] = arr;
         })   
-  
-        res.send(obj)
+        return obj
+        
+    })
+    .then(function(ob){
+        res.send(ob)
     })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
