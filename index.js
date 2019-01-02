@@ -31,7 +31,14 @@ app.get('/', function(req, res){
         
     })
     .then(function(ob){
-        res.send(ob)
+        var prop;
+        var arrOfLinks = [];
+        for(prop in ob) {
+            ob[prop].forEach(function(obj){
+                arrOfLinks.push(obj.link)
+            })
+        }
+        res.send(arrOfLinks)
     })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
