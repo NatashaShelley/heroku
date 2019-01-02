@@ -48,26 +48,10 @@ app.get('/', function(req, res){
                 arr.push(url)
             })
             
-            arr.forEach(function(link){
-                rp(link)
-                .then(function (html) {
-                    var text = $('#overview > .lumen-content-block:first-child > p', html).text();
-                    console.log(text)
-                })
-            })
+            res.send(arr)
         })   
-       
         
     })
-    // .then(function(array){
-    //     array.forEach(function(link){
-    //         rp(link)
-    //         .then(function (html) {
-    //             var text = cheerio('#overview > .lumen-content-block:first-child > p', html).text();
-    //             res.send(text)
-    //         })
-    //     })
-    // })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
         console.log(err)
