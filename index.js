@@ -49,7 +49,7 @@ app.get('/', function(req, res){
                 var link = 'https://www.lds.org' + $(link).attr("href");
                 rp(link)
                 .then(function(html){
-                    console.log(html)
+                    console.log('This is HTML ', html)
                 })
                 topic.link = $(link).attr("href")
                 topic.title = $(link).text();
