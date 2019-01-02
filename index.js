@@ -48,9 +48,9 @@ app.get('/', function(req, res){
                 arr.push(url)
             })
             
-            res.send(arr)
+            
         })   
-        
+        res.send(arr)
     })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
