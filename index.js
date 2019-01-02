@@ -47,17 +47,18 @@ app.get('/', function(req, res){
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 var topic = {}
                 var url = 'https://www.lds.org' + $(link).attr("href");
-                topic.a = url;
-                topic.title = $(link).text();
+                // topic.a = url;
+                // topic.title = $(link).text();
                 rp(url)
                 .then(function(html){
-                    
+                    topic.a = url;
+                    topic.title = $(link).text();
                     topic.text = $('#overview > .lumen-content-block:first-child > p', html).text()
                     arr.push(topic)
                 })
-                obj[$(item).attr("id")] = arr;
+                // obj[$(item).attr("id")] = arr;
             })
-            // obj[$(item).attr("id")] = arr;
+            obj[$(item).attr("id")] = arr;
         })   
         res.send(obj)
         
