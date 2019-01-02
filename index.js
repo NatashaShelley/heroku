@@ -48,8 +48,8 @@ app.get('/', function(req, res){
                 var topic = {}
                 var link = 'https://www.lds.org' + $(link).attr("href");
                 rp(link)
-                .then(function($){
-                    console.log('This is text ', $('#overview > .lumen-content-block:first-child > p').text())
+                .then(function(html){
+                    console.log('This is text ', $('#overview > .lumen-content-block:first-child > p', html).text())
                 })
                 // topic.link = $(link).attr("href")
                 // topic.title = $(link).text();
