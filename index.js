@@ -41,12 +41,16 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/', function(req, res){
     rp(options)
     .then(function ($) {
-        console.log($)
         var obj = {}
         $(".spark-drawer__container").each(function(index, item){
             var arr = []
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 var topic = {}
+                var link = 'https://www.lds.org' + $(link).attr("href");
+                rp(link)
+                .then(function(html){
+                    console.log(html)
+                })
                 topic.link = $(link).attr("href")
                 topic.title = $(link).text();
                 arr.push(topic)
