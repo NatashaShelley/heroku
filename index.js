@@ -40,8 +40,9 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/', function(req, res){
     rp(options)
     .then(function ($) {
+        var arr = []
         $(".spark-drawer__container").each(function(index, item){
-            var arr = []
+            
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 var url = 'https://www.lds.org' + $(link).attr("href")
                 arr.push(url)
