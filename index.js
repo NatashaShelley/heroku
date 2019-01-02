@@ -59,7 +59,7 @@ app.get('/', function(req, res){
                     arr.push(topic);
                     return arr;
                 }).then(function(ar){
-                    obj[$(item).attr("id")] = arr;
+                    obj[$(item).attr("id")] = ar;
                     res.send(obj)
                 })
             })
