@@ -42,16 +42,17 @@ app.get('/', function(req, res){
     rp(options)
     .then(function ($) {
         var obj = {}
-        var arr = []
+        // var arr = []
         $(".spark-drawer__container").each(function(index, item){
-            // var arr = []
+            var arr = []
             $(item).find(".list--stripped > li > a").each(function(index, link) {
-                var topic = {}
+                
                 var url = 'https://www.lds.org' + $(link).attr("href");
                 // topic.a = url;
                 // topic.title = $(link).text();
                 rp(url)
                 .then(function(html){
+                    var topic = {}
                     topic.a = url;
                     topic.title = $(link).text();
                     topic.text = $('#overview > .lumen-content-block:first-child > p', html).text()
