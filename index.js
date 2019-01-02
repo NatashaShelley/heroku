@@ -47,9 +47,9 @@ app.get('/', function(req, res){
                 var url = 'https://www.lds.org' + $(link).attr("href")
                 arr.push(url)
             })
-            console.log(arr)
+            
         })   
-        // res.send(arr)
+        res.send(arr)
         
     })
     .catch(function (err) {
