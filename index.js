@@ -52,7 +52,7 @@ app.get('/', function(req, res){
                 rp(link)
                 .then(function (html) {
                     var text = $('#overview > .lumen-content-block:first-child > p', html).text();
-                    res.send(text)
+                    console.log(text)
                 })
             })
         })   
