@@ -44,27 +44,28 @@ app.get('/', function(req, res){
         var obj = {}
         // var arr = []
         $(".spark-drawer__container").each(function(index, item){
-            var arr = []
+            
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 
                 var url = 'https://www.lds.org' + $(link).attr("href");
-                // topic.a = url;
-                // topic.title = $(link).text();
                 rp(url)
                 .then(function(html){
+                    var arr = [];
                     var topic = {}
                     topic.a = url;
                     topic.title = $(link).text();
                     topic.text = $('#overview > .lumen-content-block:first-child > p', html).text()
-                    console.log(topic)
-                    arr.push(topic)
+                    // console.log(topic)
+                    arr.push(topic);
+                    return arr;
+                }).then(function(ar){
                     obj[$(item).attr("id")] = arr;
+                    res.send(obj)
                 })
-                // obj[$(item).attr("id")] = arr;
             })
             // obj[$(item).attr("id")] = arr;
         })   
-        res.send(obj)
+        // res.send(obj)
         
     })
     // .then(function(ob){
