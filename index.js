@@ -42,15 +42,13 @@ app.get('/', function(req, res){
     rp(options)
     .then(function ($) {
         var obj = {}
-        // var arr = []
-        $(".spark-drawer__container").each(function(index, item){
-            
+        $(".spark-drawer__container").each(function(index, item){ 
+            var arr = []
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 
                 var url = 'https://www.lds.org' + $(link).attr("href");
                 rp(url)
                 .then(function(html){
-                    var arr = [];
                     var topic = {}
                     topic.a = url;
                     topic.title = $(link).text();
