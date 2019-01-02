@@ -55,8 +55,8 @@ app.get('/', function(req, res){
     .then(function(array){
         array.forEach(function(link){
             rp(link)
-            .then(function (html) {
-                var text = $('#overview > .lumen-content-block:first-child > p', html).text();
+            .then(function ($) {
+                var text = $('#overview > .lumen-content-block:first-child > p').text();
                 res.send(text)
             })
         })
