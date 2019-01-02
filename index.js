@@ -48,28 +48,28 @@ app.get('/', function(req, res){
                 var topic = {}
                 var link = 'https://www.lds.org' + $(link).attr("href");
                 rp(link)
-                .then(function(html){
-                    console.log('This is HTML ', html)
+                .then(function($){
+                    console.log('This is text ', $('#overview > .lumen-content-block:first-child > p').text())
                 })
-                topic.link = $(link).attr("href")
-                topic.title = $(link).text();
-                arr.push(topic)
+                // topic.link = $(link).attr("href")
+                // topic.title = $(link).text();
+                // arr.push(topic)
             })
-            obj[$(item).attr("id")] = arr;
+            // obj[$(item).attr("id")] = arr;
         })   
-        return obj
+        // return obj
         
     })
-    .then(function(ob){
-        var prop;
-        var arrOfLinks = [];
-        for(prop in ob) {
-            ob[prop].forEach(function(obj){
-                arrOfLinks.push(obj.link)
-            })
-        }
-        res.send(arrOfLinks)
-    })
+    // .then(function(ob){
+    //     var prop;
+    //     var arrOfLinks = [];
+    //     for(prop in ob) {
+    //         ob[prop].forEach(function(obj){
+    //             arrOfLinks.push(obj.link)
+    //         })
+    //     }
+    //     res.send(arrOfLinks)
+    // })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
         console.log(err)
