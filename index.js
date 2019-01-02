@@ -46,18 +46,21 @@ app.get('/', function(req, res){
             var arr = []
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 var topic = {}
-                var link = 'https://www.lds.org' + $(link).attr("href");
-                rp(link)
+                var url = 'https://www.lds.org' + $(link).attr("href");
+                topic.link = url;
+                topic.title = $(link).text();
+                rp(url)
                 .then(function(html){
-                    console.log('This is text ', $('#overview > .lumen-content-block:first-child > p', html).text())
+                    
+                    topic.text = $('#overview > .lumen-content-block:first-child > p', html).text()
+                    arr.push(topic)
+                    // console.log('This is text ', $('#overview > .lumen-content-block:first-child > p', html).text())
                 })
-                // topic.link = $(link).attr("href")
-                // topic.title = $(link).text();
-                // arr.push(topic)
+                
             })
-            // obj[$(item).attr("id")] = arr;
+            obj[$(item).attr("id")] = arr;
         })   
-        // return obj
+        res.send(obj)
         
     })
     // .then(function(ob){
