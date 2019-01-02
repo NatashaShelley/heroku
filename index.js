@@ -56,7 +56,7 @@ app.get('/', function(req, res){
                     arr.push(topic);
                     // console.log(arr)
                     // return arr;
-                    obj[$(item).attr("id")] = arr;
+                    // obj[$(item).attr("id")] = arr;
                     console.log(obj)
                 })
                 // .then(function(ob){
@@ -64,7 +64,7 @@ app.get('/', function(req, res){
                 //     res.send(ob)
                 // })
             })
-            // obj[$(item).attr("id")] = arr;
+            obj[$(item).attr("id")] = arr;
         })   
         
         
