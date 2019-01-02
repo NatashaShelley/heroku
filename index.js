@@ -54,14 +54,16 @@ app.get('/', function(req, res){
                     topic.title = $(link).text();
                     topic.text = $('#overview > .lumen-content-block:first-child > p', html).text()
                     arr.push(topic);
-                    return arr;
+                    console.log("Array ", arr)
+                    // return arr;
                 })
             })
             // obj[$(item).attr("id")] = arr;
         })   
-    }).then(function(ar){
-        console.log(ar)
     })
+    // .then(function(ar){
+    //     console.log(ar)
+    // })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
         console.log(err)
@@ -75,94 +77,7 @@ app.get('/', function(req, res){
 // var ids = letters.map(function(letter){
 //     return 'letter=' + letter
 // })
-// const parseTopic = function(url) {
-//     return rp(url)
-//       .then(function(html) {
-//         return {
-//           text: $('#overview > .lumen-content-block:first-child > p', html).text()
-//         };
-//       })
-//       .catch(function(err) {
-//         //handle error
-//       });
-//   };
-// function parseTopic(link){
-//     var opts = {
-//         uri: link,
-//         transform: function (body) {
-//             return cheerio.load(body);
-//         }
-//     };
-//     rp(opts)
-//     .then(function($) {
-//         return $("#overview > .lumen-content-block:first-child > p").text()
-        
-//     })
-//     .catch(function(err) {
-//       //handle error
-//     });
-// }
 
-
-// app.set('port', (process.env.PORT || 5000));
-// app.get('/', function(req, res){
-//     rp(options)
-//     .then(function (html) {
-//         // var obj = {}
-//         var arr = [];
-//         $(".spark-drawer__container").each(function(index, item){
-//         // var arr = []
-//             $(item).find(".list--stripped > li > a").each(function(index, link) {
-//             // var topic = {}
-//             // topic.link = 
-//             // console.log($(link).attr("href"))
-//                 arr.push('https://www.lds.org' + $(link).attr(href))
-//             // topic.title = $(link).text();
-//             // parseTopic('https://www.lds.org' + $(link).attr("href"))
-//             // arr.push(topic)
-//             })
-//         // obj[$(item).attr("id")] = arr;
-//         // })
-//         })
-//         return Promise.all(
-//             arr.map(function(url) {
-//               return parseTopic(url);
-//             })
-//           );
-        
-//     //     })
-//     //    
-        
-//     // return arr;
-//     // res.send(arr)
-// })
-// .then(function(txt) {
-//     // // Promise.all(
-//     //     var arrOfTopics = [];
-//     //     arrOfLinks.forEach(function(url) {
-//         //    var opts = {
-//         //         uri: url,
-//         //         transform: function (body) {
-//         //             return cheerio.load(body);
-//         //         }
-//         //     };
-//         //     rp(url)
-//         //     .then(function(html) {
-//         //         arrOfTopics.push($("#overview > .lumen-content-block:first-child > p", html).html())
-//         //         res.send(arrOfTopics)
-//         //     })
-//         //     .catch(function(err) {
-//         //     //handle error
-//         //     });
-//         // })
-//     //   );
-//     res.send(txt)
-// })
-// .catch(function (err) {
-//     // Crawling failed or Cheerio choked...
-//     console.log(err)
-// })
-// })
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
