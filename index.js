@@ -57,7 +57,7 @@ app.get('/', function(req, res){
                     // console.log(arr)
                     // return arr;
                     // obj[$(item).attr("id")] = arr;
-                    console.log(obj)
+                    // console.log(obj)
                 })
                 // .then(function(ob){
                 //     // obj[$(item).attr("id")] = ar;
