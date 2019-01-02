@@ -13,22 +13,42 @@ var options = {
 
 
 
+// app.set('port', (process.env.PORT || 5000));
+// app.get('/', function(req, res){
+//     rp(options)
+//     .then(function ($) {
+//         var obj = {}
+//         $(".spark-drawer__container").each(function(index, item){
+//             var arr = []
+//             $(item).find(".list--stripped > li > a").each(function(index, link) {
+//                 var topic = {}
+//                 topic.link = $(link).attr("href")
+//                 topic.title = $(link).text();
+//                 arr.push(topic)
+//             })
+//             obj[$(item).attr("id")] = arr;
+//         })   
+//         res.send(obj)
+        
+//     })
+//     .catch(function (err) {
+//         // Crawling failed or Cheerio choked...
+//         console.log(err)
+//     })
+// })
 app.set('port', (process.env.PORT || 5000));
 app.get('/', function(req, res){
     rp(options)
     .then(function ($) {
-        var obj = {}
         $(".spark-drawer__container").each(function(index, item){
             var arr = []
             $(item).find(".list--stripped > li > a").each(function(index, link) {
-                var topic = {}
-                topic.link = $(link).attr("href")
-                topic.title = $(link).text();
-                arr.push(topic)
+                var url = 'https://www.lds.org' + $(link).attr("href")
+                arr.push(url)
             })
-            obj[$(item).attr("id")] = arr;
+            console.log(arr)
         })   
-        res.send(obj)
+        // res.send(arr)
         
     })
     .catch(function (err) {
@@ -36,7 +56,6 @@ app.get('/', function(req, res){
         console.log(err)
     })
 })
-
 
 // app.set('port', (process.env.PORT || 5000));
 // app.get('/', function(req, res){
