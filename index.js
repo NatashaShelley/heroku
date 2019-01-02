@@ -42,8 +42,9 @@ app.get('/', function(req, res){
     links.forEach(function(link){
         rp(link)
         .then(function (html) {
-            var text = $('#overview > .lumen-content-block:first-child > p', html).text()  
-            res.send(text)
+            console.log(html)
+            // var text = $('#overview > .lumen-content-block:first-child > p', html).text()  
+            // res.send(text)
         })
         .catch(function (err) {
             // Crawling failed or Cheerio choked...
