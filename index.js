@@ -42,8 +42,9 @@ app.get('/', function(req, res){
     rp(options)
     .then(function ($) {
         var obj = {}
+        var arr = []
         $(".spark-drawer__container").each(function(index, item){
-            var arr = []
+            // var arr = []
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 var topic = {}
                 var url = 'https://www.lds.org' + $(link).attr("href");
