@@ -56,27 +56,18 @@ app.get('/', function(req, res){
                     arr.push(topic);
                     // console.log(arr)
                     // return arr;
+                    obj[$(item).attr("id")] = arr;
                 })
                 // .then(function(ar){
                 //     obj[$(item).attr("id")] = ar;
                 //     res.send(obj)
                 // })
             })
-            obj[$(item).attr("id")] = arr;
+            // obj[$(item).attr("id")] = arr;
         })   
         res.send(obj)
         
     })
-    // .then(function(ob){
-    //     var prop;
-    //     var arrOfLinks = [];
-    //     for(prop in ob) {
-    //         ob[prop].forEach(function(obj){
-    //             arrOfLinks.push(obj.link)
-    //         })
-    //     }
-    //     res.send(arrOfLinks)
-    // })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
         console.log(err)
