@@ -55,8 +55,8 @@ app.get('/', function(req, res){
     .then(function(array){
         array.forEach(function(link){
             rp(link)
-            .then(function ($) {
-                var text = $('#overview > .lumen-content-block:first-child > p').text();
+            .then(function (html) {
+                var text = cheerio('#overview > .lumen-content-block:first-child > p', html).text();
                 res.send(text)
             })
         })
