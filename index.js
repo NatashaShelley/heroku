@@ -20,23 +20,41 @@ var complete = 0;
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(req, res){
+    data = [];
+    total = 0;
+    complete = 0;
+
+    //get list
+    function getDetails(obj){
+        rp(obj.link)
+        .then(function (html) {
+           var text = $('#overview > .lumen-content-block:first-child > p', html).text() 
+            obj.desc = text;
+            complete++ 
+        })
+        .catch(function (err) {
+            // Crawling failed or Cheerio choked...
+            console.log(err)
+        })
+    }
+
+    //get list
     rp(options)
     .then(function ($) {
         $(".spark-drawer__container").each(function(index, item){
-            
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 var topic = {}
                 topic.link = 'https://www.lds.org' + $(link).attr("href")
                 topic.title = $(link).text();
                 data.push(topic);
-
+                getDetails(topic);
             })
         })  
         
        
-        res.send(data)
+        res.send('Process Started.')
         total = data.length;
-        
+        // data.forEach(getDetails)
     })
     .catch(function (err) {
         // Crawling failed or Cheerio choked...
@@ -46,20 +64,10 @@ app.get('/', function(req, res){
 
 
 app.get('/progress', function(req, res){
-    data.forEach(function(obj){
-        rp(obj.link)
-        .then(function (html) {
-           var text = $('#overview > .lumen-content-block:first-child > p', html).text() 
-            obj.desc = text;
-            complete++
-
-             res.send(complete/total *100)
-        })
-        .catch(function (err) {
-            // Crawling failed or Cheerio choked...
-            console.log(err)
-        })
-    })
+    res.send(complete/total *100)
+})
+app.get('/data', function(req, res){
+    res.send(data)
 })
 
 
