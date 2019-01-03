@@ -26,12 +26,16 @@ app.get('/', function(req, res){
             
             $(item).find(".list--stripped > li > a").each(function(index, link) {
                 var topic = {}
-                topic.link = $(link).attr("href")
+                topic.link = 'https://www.lds.org' + $(link).attr("href")
                 topic.title = $(link).text();
-                data.push(topic)
+                data.push(topic);
+
             })
-        })   
+        })  
+        
+       
         res.send(data)
+        total = data.length;
         
     })
     .catch(function (err) {
@@ -41,7 +45,22 @@ app.get('/', function(req, res){
 })
 
 
+app.get('/progress', function(req, res){
+    data.forEach(function(obj){
+        rp(obj.link)
+        .then(function ($) {
+           var text = $('#overview > .lumen-content-block:first-child > p').text() 
+            obj.desc = text;
+            complete++
 
+            return res.send(complete/total *100)
+        })
+        .catch(function (err) {
+            // Crawling failed or Cheerio choked...
+            console.log(err)
+        })
+    })
+})
 
 
 
