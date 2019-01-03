@@ -27,8 +27,8 @@ app.get('/', function(req, res){
     //get list
     function getDetails(obj){
         rp(obj.link)
-        .then(function (html) {
-           var text = $('#overview > .lumen-content-block:first-child > p', html).text() 
+        .then(function ($) {
+           var text = $('#overview > .lumen-content-block:first-child > p').text() 
             obj.desc = text;
             complete++ 
         })
