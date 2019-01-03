@@ -48,8 +48,8 @@ app.get('/', function(req, res){
 app.get('/progress', function(req, res){
     data.forEach(function(obj){
         rp(obj.link)
-        .then(function ($) {
-           var text = $('#overview > .lumen-content-block:first-child > p').text() 
+        .then(function (html) {
+           var text = $('#overview > .lumen-content-block:first-child > p', html).text() 
             obj.desc = text;
             complete++
 
