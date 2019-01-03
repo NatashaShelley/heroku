@@ -1,13 +1,13 @@
 const express = require('express');
 const request = require('request');
 const rp = require('request-promise');
-var cheerio = require('cheerio')
+var $ = require('cheerio')
 const app = express();
 
 var options = {
     uri: 'https://www.lds.org/topics?lang=eng#letter=A',
     transform: function (body) {
-        return cheerio.load(body);
+        return $.load(body);
     }
 };
 
@@ -27,8 +27,8 @@ app.get('/', function(req, res){
     //get list
     function getDetails(obj){
         rp(obj.link)
-        .then(function ($) {
-           var text = $('#overview > .lumen-content-block:first-child > p').text() 
+        .then(function (html) {
+           var text = $('#overview > .lumen-content-block:first-child > p', html).text() 
             obj.desc = text;
             complete++ 
             console.log("complete ", complete)
