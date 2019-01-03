@@ -31,6 +31,8 @@ app.get('/', function(req, res){
            var text = $('#overview > .lumen-content-block:first-child > p').text() 
             obj.desc = text;
             complete++ 
+            console.log("complete ", complete)
+            console.log("total ",total)
         })
         .catch(function (err) {
             // Crawling failed or Cheerio choked...
@@ -63,9 +65,9 @@ app.get('/', function(req, res){
 })
 
 
-app.get('/progress', function(req, res){
-    res.send(complete/total *100)
-})
+// app.get('/progress', function(req, res){
+//     res.send(complete/total *100)
+// })
 app.get('/data', function(req, res){
     res.send(data)
 })
