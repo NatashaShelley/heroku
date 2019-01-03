@@ -53,7 +53,7 @@ app.get('/progress', function(req, res){
             obj.desc = text;
             complete++
 
-            return res.send(complete/total *100)
+             res.send(complete/total *100)
         })
         .catch(function (err) {
             // Crawling failed or Cheerio choked...
