@@ -135,8 +135,10 @@ app.get('/', function(req, res){
             var topic = {}
             var rawLink = $(item).find("a").attr("href");
             var url = rawLink.charAt(0) === "/" ? "https://www.mormonnewsroom.org" + rawLink : rawLink;
+            var rawimg = $(item).find("img").attr("src");
+            var pic = rawimg.charAt(0) === "/" ? "https://www.mormonnewsroom.org" + rawimg : rawimg;
             topic.link = url;
-            topic.img = 'https://www.mormonnewsroom.org' + $(item).find("img").attr("src");
+            topic.img = pic;
             topic.title = $(item).find("h3").text();
             topic.meta = $(item).find(".blog-block-text .bold-text").text();
             topic.date = $(item).find(".dateline").html();
