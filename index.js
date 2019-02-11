@@ -114,7 +114,7 @@ app.get('/', function(req, res){
     function getDetails(obj){
         rp(obj.link)
         .then(function (html) {
-           var text = $('meta[property=og:description]', html).attr("content") 
+           var text = $('meta[property="og:description"]', html).attr("content") 
             obj.desc = text;
             complete++ 
             console.log("complete ", complete)
