@@ -131,7 +131,7 @@ app.get('/', function(req, res){
     .then(function ($) {
         $(".blog-blocks .blog-block").each(function(index, item){
             var topic = {}
-            topic.link = 'https://www.mormonnewsroom.org/' + $(item).find("a").attr("href");
+            topic.link = $(item).find("a").attr("href");
             topic.img = 'https://www.mormonnewsroom.org/' + $(item).find("img").attr("src");
             topic.title = $(item).find("h3").text();
             topic.meta = $(item).find(".blog-block-text .bold-text").text();
