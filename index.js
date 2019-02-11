@@ -112,11 +112,13 @@ app.get('/', function(req, res){
 
     //get list
     function getDetails(obj){
+        console.log("obj ",obj)
         rp(obj.link)
         .then(function (html) {
            var text = $('meta[property="og:description"]', html).attr("content") 
             obj.desc = text;
             complete++ 
+
             console.log("complete ", complete)
             console.log("total ",total)
         })
