@@ -121,6 +121,7 @@ app.get('/', function(req, res){
 
             console.log("complete ", complete)
             console.log("total ",total)
+            console.log("desc ",obj.desc)
         })
         .catch(function (err) {
             // Crawling failed or Cheerio choked...
